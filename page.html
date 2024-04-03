@@ -1,65 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Contato</title>
   </head>
   <body>
-    <h1>Contato</h1>
+    <div class="container justify-content-center">
+      <div>
+        <h1>Contato</h1>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="darkmodeSwitch" onchange="toggle()">
+          <label class="form-check-label" for="darkmodeSwitch">Dark Mode</label>
+        </div>
+      </div>
+      <h2>Insira dados iniciais para envio</h2>
+  
+      <form>
+        <div class="mb-3">
+          <label for="nome" class="form-label">Seu nome:</label>
+          <input type="text" class="form-control" id="nome" />
+        </div>
+        <div class="mb-3">
+          <label for="mensagem" class="form-label"></label>Observações:</label>
+          <textarea type="text" id="mensagem" class="form-control"></textarea>
+        </div>
+        <button type="button" onclick="conferirMensagemWhatsApp()" class="btn btn-warning">Conferir Mensagem</button>
+      </form>
 
-    <h2>Insira dados iniciais para envio</h2>
-    <label for="nome">Seu nome:</label>
-    <input type="text" id="nome" />
-    <br />
-    <br />
-    <label for="mensagem">Observações:</label>
-    <textarea type="text" id="mensagem"></textarea>
-    <br />
-    <br />
-    <button onclick="conferirMensagemWhatsApp()">Conferir Mensagem</button>
-    <br /><br />
-
-    <p>Nome: <span id="confNome"></span></p>
-    <p>Observações: <span id="confMsg"></span></p>
-    <p>Data: <span id="confDate"></span></p>
-
-    <button onclick="enviar()">Enviar Mensagem</button>
-
-    <script>
-      var nomeGlobal;
-      var mensagemGlobal;
-      var dateGlobal;
-
-      function conferirMensagemWhatsApp() {
-        var nome = document.getElementById("nome").value;
-        var mensagem = document.getElementById("mensagem").value;
-        var date = new Date();
-
-        nomeGlobal = nome;
-        mensagemGlobal = mensagem;
-        dateGlobal = date;
-
-        document.getElementById("confNome").textContent = nome;
-        document.getElementById("confMsg").textContent = mensagem;
-        document.getElementById("conDate").textContent = date;
-      }
-
-      function enviar() {
-        var numeroTelefone = "5541999999999";
-
-        var linkWhatsApp =
-          "https://wa.me/" +
-          numeroTelefone +
-          "?text=NOME DO RECEPTOR(A): " +
-          nomeGlobal +
-          " - " +
-          mensagemGlobal +
-          " - " +
-          dateGlobal;
-
-        window.open(linkWhatsApp);
-      }
-    </script>
+      <div id="conf" class="hide">
+        <p>Nome: <span id="confNome"></span></p>
+        <p>Observações: <span id="confMsg"></span></p>
+        <p>Data: <span id="confDate"></span></p>
+        <button type="button" onclick="enviar()" class="btn btn-success">Enviar Mensagem</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
